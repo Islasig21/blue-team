@@ -87,6 +87,7 @@ person1=Person('Islam',21,'Misurata')
         
 person1.ShowInfo()
 '''
+''''
 class BankAccount:
     def __init__(self,name,money):
           self.name=name
@@ -113,3 +114,4 @@ Costumer1.deposit(2000)
 Costumer1.PrintBankAcoount()                     
 Costumer1.withdraw(1000)
 Costumer1.PrintBankAcoount() 
+'''
