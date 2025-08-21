@@ -40,3 +40,39 @@ if __name__ == "__main__":
     sol = SolanaCMCRequests(api_key="YOUR_API_KEY")
     print(sol.get_quote())
 '''
+'''hw'''
+
+import requests
+
+class CoinMarketCapSolana:
+    def __init__(self, api_key):
+        self.api_key = api_key
+        self.base_url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest"
+
+    def get_solana_data(self):
+        headers = {
+            'Accepts': 'application/json',
+            'X-CMC_PRO_API_KEY': self.api_key,
+        }
+        parameters = {
+            'symbol': 'SOL',
+            'convert': 'USD'
+        }
+        try:
+            response = requests.get(self.base_url, headers=headers, params=parameters)
+            response.raise_for_status()  # Raise an exception for HTTP errors
+            data = response.json()
+            return data
+        except requests.exceptions.RequestException as e:
+            print(f"Error fetching data: {e}")
+            return None
+
+    def export_solana_data(self, data, filename="solana_data.txt"):
+        if data:
+            with open(filename, 'w') as f:
+                f.write(str(data))
+            print(f"Data exported to {filename}")
+        else:
+            print("No data to export.")
+
+
